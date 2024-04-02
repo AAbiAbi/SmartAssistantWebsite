@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+
+import  { useState } from "react";
 
 function App() {
+  
+
+  // useState('default content of divContent')
+
+  const [data, setData] = useState([{ id: 1, name: "apple" },
+  { id: 2, name: "banana" },
+  { id: 3, name: "cherry" },
+])
+  const list = data.map(item=>(
+     <li key={item.id}>{item.name}</li>
+  ))
+  let divContent = "hihi";
+  function handleClick(e) {
+    setData(data.filter(item=>item.id !==2))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ul>{}</ul>
+      <button onClick={handleClick}>{list}</button>
+      {/* {divContent} */}
     </div>
   );
 }
